@@ -225,7 +225,7 @@ var abbeyRoadRecords = [{song: "Land of Hope and Glory",
                       year: 1966},
                       {song: "Thunderbirds Are Go",
                       artist: "The Shadows with Cliff Richard",
-                      year: 1966},,
+                      year: 1966},
                       {song: "For Certain Because",
                       artist: "The Hollies",
                       year: 1967},
@@ -911,3 +911,36 @@ var abbeyRoadRecords = [{song: "Land of Hope and Glory",
                       {song: "Love Divine III",
                       artist: "Jan Mulder with The Royal Philharmonic Orchestra",
                       year: 2016}];
+
+console.log("!!!! In abbey road !!!!!");
+
+      function countInArray (array, element, i){
+        count=0;
+        for (var j = 0; j < array.length; j++) {
+              if (array[j].artist.includes(element)) {
+                  count++;
+              }
+          }
+          return [count, array[i].artist];
+      }
+
+      function maxOfTwoNumbers(leader, challenger){
+        if(leader[0]>challenger[0]){
+          return leader;
+        }else{
+          return challenger;
+        }
+      }
+
+      var leader = [0, "nobody"];
+      var novemberArtists = function () {
+        var novArtists = _.filter(abbeyRoadRecords, ['month', 11]);
+        console.log(novArtists);
+        for (var i = 0; i<novArtists.length; i++){
+          var challenger = countInArray(novArtists, novArtists[i].artist, i);
+          leader = maxOfTwoNumbers(leader, challenger);
+        }
+        console.log("The artist who record the most in November is: "+leader[1]+". He did it "+leader[0]+" times!");
+      };
+        //Remember to execute the function to actually assing the value to the var.
+        novemberArtists();
